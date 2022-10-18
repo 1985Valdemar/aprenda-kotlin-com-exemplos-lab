@@ -1,19 +1,45 @@
-enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
+import java.sql.DriverManager.println
+import kotlin.collections.List
 
-class Usuario
+// [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
 
-data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
+enum class Nivel { BASICO, INTERMEDIARIO, AVANCADO } // class enum
+
+data class Usuario(val nome: String, val  idade: Int)
+
+data class ConteudoEducacional(var nome: String, val duracao: Int = 60, val nivel: Nivel )
 
 data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
 
     val inscritos = mutableListOf<Usuario>()
-    
+
     fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
+        inscritos.add(usuario)
     }
 }
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    val cursoA = ConteudoEducacional("Nocoes de Programacao", 120, Nivel.BASICO)
+    val cursoB = ConteudoEducacional("Estrutura de dados e Servidor", 180, Nivel.INTERMEDIARIO)
+    val cursoC = ConteudoEducacional("Inteligencia Artificial", 250, Nivel.AVANCADO)
+
+    val formacao = Formacao("Ciencia da Computação", listOf(cursoA, cursoB, cursoC))
+
+    val alunoA = Usuario("Frank",14)
+    val alunoB = Usuario("Daniela",23)
+
+    formacao.matricular(alunoA)
+    formacao.matricular(alunoB)
+
+    print("Formação: ${formacao.nome}")
+    print("Conteudos:")
+    for (conteudo in formacao.conteudos){
+        print("-${conteudo.nome} (${conteudo.duracao} minutos) - Nivel: ${conteudo.nivel}")
+    }
+    print("Inscritos")
+    for(incrito in formacao.inscritos){
+        print("- ${incrito.nome} - ${incrito.idade}, anos")
+    }
+
 }
+

@@ -27,9 +27,11 @@ fun main() {
 
     val alunoA = Usuario("Frank",14)
     val alunoB = Usuario("Daniela",23)
+    val alunoC = Usuario("Valdemar", 24)
 
     formacao.matricular(alunoA)
     formacao.matricular(alunoB)
+    formacao.matricular(alunoC)
 
     print("Formação: ${formacao.nome}")
     print("Conteudos:")

@@ -58,7 +58,6 @@ fun main() {
     println("Matriculados:")
     for(incrito in formacao.inscritos) {
         println("- ${incrito.nome} - ${incrito.idade}, anos -${incrito.nivel}")
-        //println("Desejamos Sucesso Nesta Trajetoria")
     }
     println("Nossa Equipe Deseja Sucesso Nesta Trajetoria")
 }
